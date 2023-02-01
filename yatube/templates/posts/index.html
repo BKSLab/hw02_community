@@ -1,25 +1,16 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
-    <main>
-      {% block content %}     
-        <h1>Последние обновления на сайте</h1>
-        <article>
-          {% for post in posts %}
-            <ul>
-              <li>
-                Автор: {{ post.author.get_full_name }}
-              </li>
-              <li>
-                Дата публикации: {{ post.pub_date|date:"d E Y" }}
-              </li>
-            </ul>      
-            <p>{{ post.text }}</p> 
-            {% if post.group %}
-              <a href={% url 'posts:page_post' post.group.slug %}>все записи группы</a>
-              {% if not forloop.last %}<hr>{% endif %}
-            {% endif %}
-          {% endfor %} 
-        </article>
-      {% endblock %}
-    </main>
+
+{% block content %}
+  <h1>Последние обновления на сайте</h1>
+    {% for post in posts %}
+      {% block article %}
+        {% include 'includes/post.html' %}
+      {% endblock article %}
+      {% if post.group %}
+        <a href='{% url "posts:page_post" post.group.slug %}'>все записи группы</a>
+        {% if not forloop.last %}<hr>{% endif %}
+      {% endif %}
+    {% endfor %} 
+{% endblock content %}
