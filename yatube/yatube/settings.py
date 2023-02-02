@@ -1,7 +1,7 @@
-import os
+from pathlib import Path
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 SECRET_KEY = 'nh*cicaw3!u98pewazgdw6w=1hivw5_g-x+3+_t!in7n9(#pz^'
 
@@ -31,9 +31,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'yatube.urls'
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATES_DIR = (
+    BASE_DIR / 'templates'
+)
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 TEMPLATES = [
     {
@@ -56,7 +60,7 @@ WSGI_APPLICATION = 'yatube.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -75,15 +79,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
 STATIC_URL = '/static/'
+
+LAST_PUBLICATIONS = 10

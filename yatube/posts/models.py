@@ -31,7 +31,7 @@ class Post(models.Model):
     )
     group = models.ForeignKey(
         Group,
-        related_name='Group',
+        related_name='posts',
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
@@ -41,6 +41,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'посты'
+        ordering = ('-pub_date',)
 
     def __str__(self) -> str:
         return self.text
