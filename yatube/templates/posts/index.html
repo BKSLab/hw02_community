@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}
-    Последние обновления на сайте
+  Последние обновления на сайте
 {% endblock title %}
 {% block content %}
-    <h1>Последние обновления на сайте</h1>
-    {% for post in posts %}
-        {% block article %}
-            {% include 'includes/post.html' %}
-        {% endblock article %}
-        {% if post.group %}
-            <a href='{% url "posts:page_post" post.group.slug %}'>все записи группы</a>
-            {% if not forloop.last %}<hr>{% endif %}
-        {% endif %}
-    {% endfor %}
+  <h1>Последние обновления на сайте</h1>
+  {% for post in posts %}
+    {% block article %}
+      {% include "includes/post.html" %}
+    {% endblock article %}
+    {% if post.group %}
+      <a href='{% url "posts:page_post" post.group.slug %}'>все записи группы</a>
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endif %}
+  {% endfor %}
 {% endblock content %}

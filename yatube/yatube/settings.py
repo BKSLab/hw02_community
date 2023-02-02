@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 SECRET_KEY = 'nh*cicaw3!u98pewazgdw6w=1hivw5_g-x+3+_t!in7n9(#pz^'
@@ -31,9 +30,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'yatube.urls'
 
-TEMPLATES_DIR = (
-    BASE_DIR / 'templates'
-)
+TEMPLATES_DIR = BASE_DIR / 'templates'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -61,7 +58,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': str(BASE_DIR / 'db.sqlite3'),
-    }
+    },
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -85,4 +82,5 @@ TIME_ZONE = 'UTC'
 
 STATIC_URL = '/static/'
 
-LAST_PUBLICATIONS = 10
+NOMBER_DISPLAYED_OBJECTS = 10
+

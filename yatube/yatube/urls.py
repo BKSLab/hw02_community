@@ -1,10 +1,9 @@
 from django.contrib import admin
-from posts.apps import PostsConfig
 from django.urls import include, path
 
-app_name = PostsConfig.name
+from posts.apps import PostsConfig
 
 urlpatterns = [
-    path('', include('posts.urls', namespace=app_name)),
+    path('', include('posts.urls', PostsConfig.name)),
     path('admin/', admin.site.urls),
 ]
