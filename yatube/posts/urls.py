@@ -1,5 +1,5 @@
-from posts.apps import PostsConfig
 from django.urls import path
+from posts.apps import PostsConfig
 from posts.views import group_posts, index
 
 
