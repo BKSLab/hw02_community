@@ -2,4 +2,10 @@
 indent = "2"
 max_line_length = "79"
 preserve_blank_lines = true
-profile = "django" 
+profile = "django"
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "yatube.settings"
