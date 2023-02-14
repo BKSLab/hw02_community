@@ -9,7 +9,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
+    'core.apps.CoreConfig',
+    'about.apps.AboutConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +50,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.year.year',
             ],
         },
     },
@@ -83,3 +87,13 @@ TIME_ZONE = 'UTC'
 STATIC_URL = '/static/'
 
 NOMBER_DISPLAYED_OBJECTS = 10
+
+LOGIN_URL = 'users:login'
+
+LOGIN_REDIRECT_URL = 'posts:h_page'
+
+# LOGOUT_REDIRECT_URL = 'posts:h_page'
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# указываем директорию, в которую будут складываться файлы писем
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
